@@ -1,0 +1,8 @@
+Amanda;111;1543
+Alberto;222;2935
+Jane;333;3573
+Igor;444;4935
+Samara;555;5278
+Maria Luiza;666;6212
+Cesar;777;7845
+Pedro Felipe;888;8563

@@ -6,14 +6,16 @@
 struct aluno {
     char nome[81];
     int matricula;
+    int documento;
 };
 
 /* Funcao que cria um aluno e retorna como ponteiro */
 /// @brief 
 /// @param nome 
 /// @param matricula 
+/// @param documento 
 /// @return 
-Aluno *cria_aluno (char *nome, int matricula) {
+Aluno *cria_aluno (char *nome, int matricula, int documento) {
     Aluno *aluno = (Aluno*) malloc(sizeof(Aluno));
     // verifica se ocorreu tudo certo com a alocacao
     if (aluno == NULL) {
@@ -22,6 +24,7 @@ Aluno *cria_aluno (char *nome, int matricula) {
     }
     strcpy(aluno->nome, nome);
     aluno->matricula = matricula;
+    aluno->documento = documento;
     return aluno;
 }
 
@@ -36,6 +39,7 @@ void exibe_alunos (Aluno **alunos, int n_alunos) {
         printf("\nAluno %d:\n", i+1);
         printf("Nome: %s\n", alunos[i]->nome);
         printf("Matricula: %d\n", alunos[i]->matricula);
+        printf("Documento: %d\n", alunos[i]->documento);
     }
 }
 
