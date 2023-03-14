@@ -25,7 +25,7 @@ Aluno *cria_aluno (char *nome, int matricula) {
     return aluno;
 }
 
-/* Funcao que exibe os alunos */
+/* Funcao que exibe todos os alunos */
 /// @brief 
 /// @param alunos 
 /// @param n_alunos 
