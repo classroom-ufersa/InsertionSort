@@ -1,0 +1,5 @@
+-START: Carregar dados dos alunos
+-MENU: Cadastrar aluno-> InsertionSORT alfabetic -> atualizar arquivo
+
+-COMPUTAR TEMPO DO SORT
+-INFORMAR COMPLEXIDADE
