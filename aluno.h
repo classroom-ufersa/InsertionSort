@@ -8,7 +8,8 @@ typedef struct aluno Aluno;
 
 /* Funcoes exportadas */
 Aluno *cria_aluno (char *nome, int matricula, int documento);
-void exibe_alunos (Aluno **alunos, int n_alunos);
+//void exibe_alunos (Aluno **alunos, int n_alunos);
+int obter_alunos(Aluno* alunos);
 void libera_aluno (Aluno *aluno);
 
 #endif

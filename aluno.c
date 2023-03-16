@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdio.h>
 #include "aluno.h"
+#define tam_linha 100
+
 
 struct aluno {
     char nome[81];
@@ -32,15 +34,39 @@ Aluno *cria_aluno (char *nome, int matricula, int documento) {
 /// @brief 
 /// @param alunos 
 /// @param n_alunos 
-void exibe_alunos (Aluno **alunos, int n_alunos) { 
-    int i;
-    printf("----------ALUNOS----------\n");
-    for (i = 0; i < n_alunos; i++) {
-        printf("\nAluno %d:\n", i+1);
-        printf("Nome: %s\n", alunos[i]->nome);
-        printf("Matricula: %d\n", alunos[i]->matricula);
-        printf("Documento: %d\n", alunos[i]->documento);
+
+int obter_alunos(Aluno* alunos){
+    int nlinhas =0;
+    FILE *al_file;
+    char * linha = (char*) malloc(tam_linha*sizeof(char));
+    //int nlinhas = 0;
+    //char nome[100];
+    //int matricula, documento;
+
+    //verificando alocacao de linha
+    if (linha == NULL) printf("Erro de alocação.");
+    //lendo arquivos
+    al_file = fopen("dados_alunos.txt", "r+");
+    //verificando se o arquivo foi lido com sucesso.
+    if (al_file == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        exit(1);
     }
+   //lendo cada linha do arquivo, salvando os dados e exibindo na tela.
+    printf("----------ALUNOS----------\n");
+    printf("Nome\t\tMatricula\tDocumento\n");
+    while (fscanf(al_file, "%[^;];%d;%d\n", alunos[nlinhas].nome, &alunos[nlinhas].matricula, &alunos[nlinhas].documento) != EOF) {
+        printf("%d- %s\t", nlinhas+1, alunos[nlinhas].nome);
+        printf("%d\t\t", alunos[nlinhas].matricula);
+        printf("%d\n", alunos[nlinhas].documento);
+        (nlinhas)++;
+    }
+    printf("\nTotal de alunos: %d\n", nlinhas);
+
+
+    if(fclose(al_file)!=0) printf("Erro ao fechar arquivo.");
+    free(linha);
+    return nlinhas;
 }
 
 /* Funcao que libera os espaco de memoria ocupado por um tipo aluno */
