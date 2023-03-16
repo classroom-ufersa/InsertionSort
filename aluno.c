@@ -4,6 +4,7 @@
 #include "aluno.h"
 #define tam_linha 100
 
+
 struct aluno {
     char nome[81];
     int matricula;
@@ -33,16 +34,6 @@ Aluno *cria_aluno (char *nome, int matricula, int documento) {
 /// @brief 
 /// @param alunos 
 /// @param n_alunos 
-void exibe_alunos (Aluno **alunos, int n_alunos) { 
-    int i;
-    printf("----------ALUNOS----------\n");
-    for (i = 0; i < n_alunos; i++) {
-        printf("\nAluno %d:\n", i+1);
-        printf("Nome: %s\n", alunos[i]->nome);
-        printf("Matricula: %d\n", alunos[i]->matricula);
-        printf("Documento: %d\n", alunos[i]->documento);
-    }
-}
 
 int obter_alunos(Aluno* alunos){
     int nlinhas =0;
