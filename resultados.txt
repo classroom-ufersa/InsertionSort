@@ -1,9 +1,8 @@
-Amanda;111;1543
-Alberto;222;2935
-Cesar;777;7845
-Dayvison Silva;12334;111
-Igor ka;444;4935
-Jane Jon;333;3573
-Maria Luiza;666;6212
-Pedro Felipe;888;8563
-Samara;555;5278
+Amanda
+Alberto
+Cesar
+Igor
+Jane
+Maria Luiza
+Pedro Felipe
+Samara

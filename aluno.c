@@ -5,6 +5,7 @@
 #define TAM_LINHA 100
 
 
+
 struct aluno {
     char nome[81];
     int matricula;
