@@ -1,28 +1,28 @@
 
 class Aluno(): #criando a classe de aluno e encapsulando
     def __init__(self,nome,matricula,documento) -> None:
-        self.nome=nome
-        self.matricula=matricula
-        self.documento=documento
+        self.__nome = nome
+        self.__matricula=matricula
+        self.__documento=documento
         pass
     
     def getNome(self):
-        return self.nome
+        return self.__nome
    
     def setNome(self,nome):
-        self.nome = nome
+        self.__nome = nome
     
     def getMatricula(self):
-        return self.matricula
+        return self.__matricula
    
     def setMatricula(self,matricula):
-        self.matricula = matricula
+        self.__matricula = matricula
     
     def getDocumento(self):
-        return self.documento
+        return self.__documento
    
     def setDocumento(self,documento):
-        self.documento = documento
+        self.__documento = documento
 
     
     nome = property(fget=getNome,fset=setNome)

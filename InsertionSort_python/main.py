@@ -1,7 +1,8 @@
 from aluno import Aluno
+from alunodao import AlunoDao
 
-def main():
-    pass
-
-if __name__ =='__main__':
-    main()
+#teste por enquanto
+aluno = Aluno('antrcos',111,123124)
+alunodao = AlunoDao()
+alunodao.cadastrar_aluno(aluno)
+alunodao.listar_aluno()
