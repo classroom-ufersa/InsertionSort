@@ -4,32 +4,11 @@
 #include "aluno.h"
 #define TAM_LINHA 100
 
-
-
 struct aluno {
     char nome[81];
     int matricula;
     int documento;
 };
-
-int conta_linhas(){
-    FILE *arquivo_origem;
-    char linha[100];
-    int linhas = 0;
-
-    arquivo_origem = fopen("dados_alunos.txt", "r"); // abre o arquivo_origem para leitura
-    if (arquivo_origem == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        exit(1);
-    }
-
-    while (fgets(linha, 100, arquivo_origem) != NULL) { // lê cada linha do arquivo
-        linhas++;
-    }
-
-    fclose(arquivo_origem); // fecha o arquivo
-    return linhas; // retorna a quantidade de linhas = quantidade de alunos
-}
 
 /* Funcao que cria um aluno e retorna como ponteiro */
 /// @brief 
@@ -47,17 +26,18 @@ Aluno *cria_aluno (char *nome, int matricula, int documento) {
     strcpy(aluno->nome, nome);
     aluno->matricula = matricula;
     aluno->documento = documento;
+
+    printf("Aluno criado com sucesso!\n");
     return aluno;
 }
 
 /* Funcao que exibe todos os alunos */
 /// @brief 
 /// @param alunos 
-/// @param n_alunos 
-void obter_alunos(Aluno **alunos, int n_alunos){
+int obter_alunos(Aluno **alunos){
     FILE *arquivo_origem;
     char linha[TAM_LINHA], nome[81];
-    int matricula, documento, i = 0;
+    int matricula, documento, i = 0, linhas = 0;;
 
     //lendo arquivo com as informacoes dos alunos
     arquivo_origem = fopen("dados_alunos.txt", "r"); // abre o arquivo_origem para leitura
@@ -72,9 +52,12 @@ void obter_alunos(Aluno **alunos, int n_alunos){
         aluno->matricula = matricula;
         aluno->documento = documento;
         alunos[i++] = aluno; // inclui um ponteiro de Aluno para o vetor
+        linhas++;
     }
 
     fclose(arquivo_origem); // fecha o arquivo
+
+    return linhas;
 }
 
 void exibe_alunos (Aluno **alunos, int n_alunos) {
@@ -86,11 +69,12 @@ void exibe_alunos (Aluno **alunos, int n_alunos) {
     }
 }
 
-/* Funcao que libera os espaco de memoria ocupado por um tipo aluno */
+/* Funcao que libera os espaco de memoria ocupado por uma struct do tipo aluno */
 void libera_aluno (Aluno *aluno) {
     free(aluno);
 }
 
+/* Funcao insertion sort, responsavel por ordenar as iniciais dos alunos em ordem alfabetica */
 void insertion_sort(char *vetor, int tam){
     int i, j, aux;
     for (i = 1; i < tam; i++){
@@ -105,6 +89,7 @@ void insertion_sort(char *vetor, int tam){
     }
 }
 
+/* Funcao ordena_alunos, responsavel por ordenar os alunos no vetor */
 void ordena_alunos(Aluno **alunos, int n_alunos) {
     Aluno *aux;
     int i, j;
@@ -130,7 +115,7 @@ void ordena_alunos(Aluno **alunos, int n_alunos) {
 void atualiza_arquivo(Aluno **alunos, int n_alunos){
     int i;
     FILE *arquivo;
-    arquivo = fopen("resultados.txt", "w"); // abre o arquivo para escrita
+    arquivo = fopen("dados_alunos.txt", "w"); // abre o arquivo para escrita
 
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo!\n");
