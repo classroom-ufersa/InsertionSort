@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
+#include <time.h>
 #include "aluno.h"
 #define TAM_LINHA 100
 
@@ -23,6 +25,7 @@ Aluno *cria_aluno (char *nome, int matricula, int documento) {
         printf("Memoria insuficiente!\n");
         exit(1);
     }
+    nome[0] = toupper(nome[0]); /* transforma a primeira letra do nome em maiusculo */
     strcpy(aluno->nome, nome);
     aluno->matricula = matricula;
     aluno->documento = documento;
@@ -76,6 +79,11 @@ void libera_aluno (Aluno *aluno) {
 
 /* Funcao insertion sort, responsavel por ordenar as iniciais dos alunos em ordem alfabetica */
 void insertion_sort(char *vetor, int tam){
+    clock_t inicio, fim;
+    double tempo_execucao;
+
+    // inicio da funcao insertion_sort 
+    inicio = clock(); // armazena o horario de inicio da funcao
     int i, j, aux;
     for (i = 1; i < tam; i++){
         aux = vetor[i];
@@ -87,6 +95,11 @@ void insertion_sort(char *vetor, int tam){
         }
         vetor[j+1] = aux;
     }
+    // fim da funcao insertion_sort 
+    
+    fim = clock(); // armazena o horario de termino da funcao
+    tempo_execucao = ((double) (fim - inicio)) / CLOCKS_PER_SEC; // calcula o tempo de execucao da funcao
+    printf("Tempo de execucao: %.2f segundos\n", tempo_execucao);
 }
 
 /* Funcao ordena_alunos, responsavel por ordenar os alunos no vetor */

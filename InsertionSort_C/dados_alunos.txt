@@ -1,8 +1,9 @@
 Amanda Gomes;111;1543
 Benedito Neto;999;991010
-Cesar Sampaio;777;6677
-Dayvison Silva;12334;111
+Dayvison silva;2377;312989
+Fernanda Brito;23;21
 Hercules Nobre;1111;1112
+Maria Barreto;2344;53453
 Pamela Oliveira;2334;8899
 Samara Pinheiro;555;4455
 Valentina Silva;222;2935
