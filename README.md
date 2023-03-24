@@ -1,7 +1,5 @@
 # InsertionSort
-## Descrição
-
-É um algoritmo de ordenação que, dado uma estrutura (array, lista) constrói uma matriz final com um elemento de cada vez, uma inserção por vez. Assim como algoritmos de ordenação quadrática, é bastante eficiente para problemas com pequenas entradas, sendo o mais eficiente entre os algoritmos desta ordem de classificação.
+#### É um algoritmo de ordenação que, dado uma estrutura (array, lista) constrói uma matriz final com um elemento de cada vez, uma inserção por vez. Assim como algoritmos de ordenação quadrática, é bastante eficiente para problemas com pequenas entradas, sendo o mais eficiente entre os algoritmos desta ordem de classificação.
 
 ## Características
 Apesar de ser menos eficiente do que algoritmos como Merge Sort e Quick Sort (de ordem O(nlog(n))), o Insertion Sort possui algumas características consideráveis:
