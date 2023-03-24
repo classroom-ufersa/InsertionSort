@@ -7,7 +7,6 @@
 int main (void) {
     Aluno *alunos[MAX_ALUNOS]; // vetor de ponteiros para Aluno
     int n_alunos = obter_alunos(alunos), i; // vetor preenchido no inicio do programa
-    //char* nome_arquivo = "dados_alunos.txt"; // nome do arquivo a ser lido
     char nome[81];
     int matricula, documento;
 
