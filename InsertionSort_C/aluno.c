@@ -20,12 +20,12 @@ struct aluno {
 /// @return 
 Aluno *cria_aluno (char *nome, int matricula, int documento) {
     Aluno *aluno = (Aluno*) malloc(sizeof(Aluno));
-    // verifica se ocorreu tudo certo com a alocacao
+    // Verifica se ocorreu tudo certo com a alocacao
     if (aluno == NULL) {
         printf("Memoria insuficiente!\n");
         exit(1);
     }
-    nome[0] = toupper(nome[0]); /* transforma a primeira letra do nome em maiusculo */
+    nome[0] = toupper(nome[0]); /* Transforma a primeira letra do nome em maiusculo */
     strcpy(aluno->nome, nome);
     aluno->matricula = matricula;
     aluno->documento = documento;
@@ -42,23 +42,23 @@ int obter_alunos(Aluno **alunos){
     char linha[TAM_LINHA], nome[81];
     int matricula, documento, i = 0, linhas = 0;;
 
-    //lendo arquivo com as informacoes dos alunos
-    arquivo_origem = fopen("dados_alunos.txt", "r"); // abre o arquivo_origem para leitura
+    //Lendo arquivo com as informacoes dos alunos
+    arquivo_origem = fopen("dados_alunos.txt", "r"); // Abre o arquivo_origem para leitura
     if (arquivo_origem == NULL) {
         printf("Erro ao abrir o arquivo.\n");
         exit(1);
     }
     while (fgets(linha, TAM_LINHA, arquivo_origem) != NULL) {
         Aluno *aluno = (Aluno*) malloc(sizeof(Aluno));
-        sscanf(linha, " %[^;];%d;%d", nome, &matricula, &documento); // resgata as informações do aluno
+        sscanf(linha, " %[^;];%d;%d", nome, &matricula, &documento); // Resgata as informações do aluno
         strcpy(aluno->nome, nome); 
         aluno->matricula = matricula;
         aluno->documento = documento;
-        alunos[i++] = aluno; // inclui um ponteiro de Aluno para o vetor
+        alunos[i++] = aluno; // Inclui um ponteiro de Aluno para o vetor
         linhas++;
     }
 
-    fclose(arquivo_origem); // fecha o arquivo
+    fclose(arquivo_origem); // Fecha o arquivo
 
     return linhas;
 }
@@ -82,24 +82,43 @@ void insertion_sort(char *vetor, int tam){
     clock_t inicio, fim;
     double tempo_execucao;
 
-    // inicio da funcao insertion_sort 
-    inicio = clock(); // armazena o horario de inicio da funcao
-    int i, j, aux;
-    for (i = 1; i < tam; i++){
-        aux = vetor[i];
-        j = i-1;
-        
-        while ((j >= 0) && (aux < vetor[j])){
-            vetor[j+1] = vetor[j];
-            j--;
+    // Inicio da funcao insertion_sort 
+    inicio = clock(); // Armazena o horario de inicio da funcao
+    int i, j, aux; // Executa 1 vez, c1
+    for (i = 1; i < tam; i++){ // Executa n-1 vezes, c2
+        aux = vetor[i]; // Executa n-1 vezes, c3
+        j = i-1;// Executa n-1 vezes, c4
+        while ((j >= 0) && (aux < vetor[j])){ // Executa n(n-1) vezes, c5
+            vetor[j+1] = vetor[j]; //Executa n(n-1) vezes, c6
+            j--; //Executa n(n-1) vezes, c7
         }
-        vetor[j+1] = aux;
+        vetor[j+1] = aux; //Executa n-1 vezes, c8
     }
-    // fim da funcao insertion_sort 
+    // Fim da funcao insertion_sort 
+    /* T(n) = c1 + (c2+c3+c4+c8)(n-1) + n(n-1)(c5+c6+c7)
+
+    T(n) = c + b(n-1) + n(n-1)*a
+
+    T(n) = c + bn - b + an² - an
+
+    T(n) = bn + an² - an
+
+    T(n) = n + n² - n
+
+    T(n) = n²
+
+    T(n) = O(n²)
     
-    fim = clock(); // armazena o horario de termino da funcao
-    tempo_execucao = ((double) (fim - inicio)) / CLOCKS_PER_SEC; // calcula o tempo de execucao da funcao
-    printf("Tempo de execucao: %.2f segundos\n", tempo_execucao);
+    Pior e Medio Insertion
+    T(n) = O(n²)
+
+    Melhor Insertion
+    T(n) = O(n)
+    */
+    
+    fim = clock(); // Armazena o horario de termino da funcao
+    tempo_execucao = ((double) (fim - inicio)) / CLOCKS_PER_SEC; // Calcula o tempo de execucao da funcao
+    printf("Tempo de execucao: %.2f segundos\n", tempo_execucao); //Exibindo o tempo de execucao da funcao
 }
 
 /* Funcao ordena_alunos, responsavel por ordenar os alunos no vetor */
@@ -124,11 +143,11 @@ void ordena_alunos(Aluno **alunos, int n_alunos) {
         }
     }  
 }
-
+/* Funcao para atualizar o arquivo dos alunos*/
 void atualiza_arquivo(Aluno **alunos, int n_alunos){
     int i;
     FILE *arquivo;
-    arquivo = fopen("dados_alunos.txt", "w"); // abre o arquivo para escrita
+    arquivo = fopen("dados_alunos.txt", "w"); // Abre o arquivo para escrita
 
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo!\n");
@@ -145,6 +164,6 @@ void atualiza_arquivo(Aluno **alunos, int n_alunos){
         }
     }
     
-    fclose(arquivo); // fecha o arquivo
+    fclose(arquivo); // Fecha o arquivo
     printf("Arquivo atualizado!\n");
 }

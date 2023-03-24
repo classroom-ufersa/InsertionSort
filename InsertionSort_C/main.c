@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "aluno.h"
+#include "aluno.c"
 #define MAX_ALUNOS 10
 
 int main (void) {
@@ -11,14 +11,14 @@ int main (void) {
     char nome[81];
     int matricula, documento;
 
-    printf("Bem-vindo ao Programa de Ordenação de Alunos!\n");
+    printf("Bem-vindo ao Programa de Ordenacao de Alunos!\n");
     int escolha = 0;
     while (escolha != 3) {
         printf("\nMenu:\n");
         printf("1. Cadastrar novo aluno\n");
         printf("2. Listar alunos cadastrados\n");
         printf("3. Sair do programa\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opcao: ");
         scanf("%d", &escolha);
         
         switch (escolha) {
@@ -38,11 +38,11 @@ int main (void) {
                     alunos[n_alunos++] = novo_aluno;
                     atualiza_arquivo(alunos, n_alunos);
                 } else {
-                    printf("NÚMERO MÁXIMO DE ALUNOS ATINGIDO\n");
+                    printf("NUMERO MAXIMO DE ALUNOS ATINGIDO\n");
                 }
                 break;
             case 2:
-                /* funcao de listar */
+                /* Funcao de listar */
                 exibe_alunos(alunos, n_alunos);
                 break;
             case 3:
