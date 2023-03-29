@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>InsertionSort</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">InsertionSort</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://github.com/classroom-ufersa/InsertionSort">Github</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+      <br><br><br>
+      <h1>InsertionSort</h1>
+    <h6>Veja abaixo o exemplo na pratica de como o algoritmo de InsertionSort adiciona de forma ordenada os alunos na lista ou veja os códigos que foram implementados.</h6>
+      <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#lista-alunos">Exemplo prático</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#codigos">Códigos</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <br>
+        <div id="lista-alunos" class="container tab-pane active">
+          <table class="table table-dark table-striped">
+            
+            <thead><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Adicionar Aluno</button>
+              <tr>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Documento</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <br>
+        </div>
+
+        <div id="codigos" role="group" class="container tab-pane fade">
+                  <div class="nav navbar-light btn-group btn-group-toggle" data-toggle="buttons">
+                 
+                    <label class="btn btn-secondary active">
+                      <input type="radio" name="options" id="option2" data-toggle="tab" href="#codigo-c" checked> Código em C
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" id="option3" data-toggle="tab"  href="#codigo-js"> Código em JS
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" data-toggle="tab"  href="#codigo-py"> Código em Python
+                    </label>
+                  </div>
+                
+            <div class="tab-content justify-content-center bg-light">
+                <br>
+                <div id="codigo-c" class="container tab-pane active">
+                    <a>Código principal do arquivo</a> <a href="https://github.com/classroom-ufersa/InsertionSort/blob/main/InsertionSort_C/main.c">main.c</a>
+                    <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fclassroom-ufersa%2FInsertionSort%2Fblob%2Fmain%2FInsertionSort_C%2Fmain.c&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+                </div>
+                <div id="codigo-js" class="container tab-pane">
+                    js
+                </div>
+                <div id="codigo-py" class="container tab-pane">
+                    <a>Código principal do arquivo</a> <a href="https://github.com/classroom-ufersa/InsertionSort/blob/main/InsertionSort_C/main.c">main.py</a>
+                    <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fclassroom-ufersa%2FInsertionSort%2Fblob%2Fmain%2FInsertionSort_python%2Fmain.py&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+                </div>
+            </div>  
+        </div>
+      </div>
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Insira os dados do aluno</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return addAluno();">
+                    <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" class="form-control" id="nome" placeholder="nome" required />
+        </div>
+        <div class="form-group">
+          <label for="matricula">Matrícula:</label>
+          <input
+            type="number"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            class="form-control rounded-3"
+            id="matricula"
+            placeholder="123"
+            required
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="documento">Documento:</label>
+          <input
+            type="number"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            class="form-control"
+            id="documento"
+            placeholder="321"
+            required
+          />
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+                  </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      
+
+      <!-- Scripts -->
+      <script src="index.js"></script>
+
+    </div>
+
+  </body>
+</html>
