@@ -6,6 +6,7 @@ class Aluno(): #criando a classe de aluno e encapsulando
         self.__documento=documento
         pass
     
+    #funções gets e sets
     def getNome(self):
         return self.__nome
    
@@ -24,7 +25,7 @@ class Aluno(): #criando a classe de aluno e encapsulando
     def setDocumento(self,documento):
         self.__documento = documento
 
-    
+    #encapsulando em property
     nome = property(fget=getNome,fset=setNome)
     documento = property(fget=getDocumento, fset=setDocumento)
     matricula = property(fget=getMatricula,fset=setMatricula)
