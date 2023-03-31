@@ -1,6 +1,7 @@
-
+//declarando vetor de alunos
 let alunos = [];
 
+//função pra cadastro de alunos
 function addAluno() {
   let nome = document.getElementById("nome").value;
   let matricula = document.getElementById("matricula").value;
@@ -15,7 +16,7 @@ function addAluno() {
     tbody.innerHTML += `<tr><td>${aluno.nome}</td><td>${aluno.matricula}</td><td>${aluno.documento}</td></tr>`;
   }
 }
-
+//função pra ordenar o vetor de alunos
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let j = i - 1;
